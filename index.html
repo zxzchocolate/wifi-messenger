@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local WiFi Messenger</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div id="serverSelectScreen" class="screen">
+            <div class="server-select-box">
+                <h1>🌐 Local WiFi Messenger</h1>
+                <p>Connect with others on your local network</p>
+                
+                <input type="text" id="usernameInput" placeholder="Enter your username" maxlength="20">
+                
+                <div class="server-options">
+                    <div class="option-section">
+                        <h3>Available Servers</h3>
+                        <div id="serversList" class="servers-list">
+                            <div class="loading">Loading servers...</div>
+                        </div>
+                    </div>
+                    
+                    <div class="option-section">
+                        <h3>Create New Server</h3>
+                        <input type="text" id="newServerName" placeholder="Server name" maxlength="30">
+                        <input type="password" id="newServerPassword" placeholder="Password (optional)" maxlength="50">
+                        <button id="createServerBtn">Create Server</button>
+                    </div>
+                </div>
+                
+                <!-- Admin Panel -->
+                <div class="admin-panel">
+                    <h3>🔧 Admin Panel</h3>
+                    <input type="password" id="adminPasswordInput" placeholder="Admin password" maxlength="50">
+                    <div class="admin-buttons">
+                        <button id="resetServersBtn" class="admin-btn reset-btn">Reset All Servers</button>
+                        <button id="endChatBtn" class="admin-btn end-btn">End Chat for All</button>
+                    </div>
+                    <div id="adminMessage" class="admin-message"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Password Modal -->
+        <div id="passwordModal" class="modal hidden">
+            <div class="modal-content">
+                <h3>Enter Server Password</h3>
+                <input type="password" id="serverPasswordInput" placeholder="Password">
+                <div class="modal-buttons">
+                    <button id="passwordSubmitBtn">Join</button>
+                    <button id="passwordCancelBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="chatScreen" class="screen hidden">
+            <div class="chat-header">
+                <h2 id="serverTitle">Local WiFi Messenger</h2>
+                <div class="header-controls">
+                    <button id="leaveServerBtn" class="leave-btn">Leave Server</button>
+                </div>
+                <div class="status">
+                    <span id="connectionStatus" class="status-indicator">●</span>
+                    <span id="userCount">0 users online</span>
+                </div>
+            </div>
+
+            <div class="chat-container">
+                <div class="sidebar">
+                    <h3>Online Users</h3>
+                    <ul id="usersList"></ul>
+                </div>
+
+                <div class="chat-main">
+                    <div id="messagesContainer" class="messages-container">
+                        <div class="welcome-message">
+                            Welcome to the chat! Start typing to send messages.
+                        </div>
+                    </div>
+
+                    <div id="typingIndicator" class="typing-indicator"></div>
+
+                    <div class="message-input-container">
+                        <input type="text" id="messageInput" placeholder="Type your message..." maxlength="500">
+                        <button id="sendBtn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
