@@ -82,7 +82,7 @@ The server automatically detects and displays your local IP addresses. Common sc
 
 ## Security Note 🔒
 
-This application is designed for local network use only. It doesn't include authentication or encryption, making it perfect for trusted local environments like home or office networks.
+This application is designed for local network use only. It doesn't include authentication or encryption, making it perfect for trusted local environments like home or office networks. Admin Access: admin123
 
 ## Customization 🎨
 
